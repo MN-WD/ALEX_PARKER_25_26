@@ -17,9 +17,7 @@
                 <!-- ADD A POST END -->
 
                 <!-- Blog Post Start -->
-                <div class="col-md-12 blog-post row">
-                    <?php echo $content; ?>
-                </div>
+                <?php echo $content; ?>
                 <!-- Blog Post End -->
 
                 <?php include '../app/views/templates/partials/_pagination.php'; ?>
