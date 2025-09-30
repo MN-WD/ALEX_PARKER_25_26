@@ -12,7 +12,7 @@
     <?php echo $post['created_at']; ?> | <span>Life style</span>
 </div>
 <p>
-    <?php echo $post['text']; ?>
+    <?php echo \Core\Helpers\truncate($post['text']); ?>
 </p>
 <a
     href="single.html"
