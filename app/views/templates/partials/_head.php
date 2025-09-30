@@ -10,6 +10,8 @@
 <meta name="copyright" content="company name" />
 <meta name="robots" content="index,follow" />
 
+<base href="<?php echo BASE_URL; ?>">
+
 <title>DevBlog - Personal Blog Template - <?php echo $title; ?></title>
 
 <!-- Favicon -->
