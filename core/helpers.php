@@ -2,7 +2,7 @@
 
 namespace Core\Helpers;
 
-function truncate ( string $string, int $max_length = 250):string {
+function truncate ( string $string, int $max_length = 150):string {
     if (strlen($string) > $max_length) :
         $string = substr($string, 0, $max_length);
         $last_space = strrpos($string, " ");

@@ -6,4 +6,4 @@
 // CTRL: pagesController
 // ACTION: homeAction
 include_once '../app/controllers/pagesController.php';
-\App\Controllers\PagesController\homeAction($db);
+\App\Controllers\PagesController\indexAction($db);

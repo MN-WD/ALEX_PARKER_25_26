@@ -3,10 +3,14 @@
 namespace App\Models\PostsModel;
 use \PDO;
 
-function findAll (PDO $db):array {
-    $sql = "SELECT *
-            FROM posts
-            ORDER BY created_at DESC
-            LIMIT 10;";
-    return $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+function findAll (PDO $db, int $limit = 10): array {
+    $sql = "SELECT p.*, p.id AS postID, c.id AS categoryID, c.name
+            FROM posts p
+            INNER JOIN categories c ON p.category_id = c.id
+            ORDER BY p.created_at DESC
+            LIMIT :limit;";
+    $rs = $db->prepare($sql);
+    $rs->bindValue(':limit', $limit, PDO::PARAM_INT);
+    $rs->execute();
+    return $rs->fetchAll(PDO::FETCH_ASSOC);
 }
