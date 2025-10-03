@@ -13,8 +13,6 @@
                 <?php echo $content; ?>
                 <!-- Blog Post End -->
 
-                <?php include '../app/views/templates/partials/_pagination.php'; ?>
-
             </div>
             </div>
         </div>

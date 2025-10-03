@@ -1,6 +1,6 @@
 <!-- ADD A POST -->
 <div>
-<a href="form.html" type="button" class="btn btn-primary"
+<a href="posts/addForm" type="button" class="btn btn-primary"
     >Add a Post</a
 >
 </div>
@@ -17,7 +17,7 @@
     </a>
 </div>
 <div class="post-info">
-    <span><?php echo $post['created_at']; ?></span> | <span><?php echo $post['name']; ?></span>
+    <span><?php echo date('d.M.Y', strtotime($post['created_at']));?></span> | <span><?php echo $post['name']; ?></span>
 </div>
 <p>
     <?php echo \Core\Helpers\truncate($post['text']); ?>
@@ -33,3 +33,5 @@
 </div>
 <?php endforeach; ?>
 <!-- Blog Post End -->
+
+<?php include '../app/views/templates/partials/_pagination.php'; ?>

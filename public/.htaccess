@@ -4,11 +4,28 @@ RewriteEngine on
 
 # ROUTES
 
+# DÉTAIL D'UN POST ---------------------------------------------
 # posts.show
 # URL: posts/id/slug
 # PATTERN: ?posts=show&id=x
 RewriteRule ^posts/([1-9][0-9]*)/[a-z0-9][a-z0-9\-]*$ index.php?posts=show&id=$1 [L]
 
+# FORMULAIRE D'AJOUT D'UN POST ---------------------------------
+# URL: posts/addForm
+# PATTERN: ?posts=show&id=x
+RewriteRule ^posts/addForm$ index.php?posts=addForm [L]
+
+# AJOUT D'UN POST : INSERT -------------------------------------
+# URL: posts/addInsert
+# PATTERN: ?posts=show&id=x
+RewriteRule ^posts/addInsert$ index.php?posts=addInsert [L]
+
+# SUPPRESSION D'UN POST : DELETE -------------------------------
+# URL: posts/x/delete
+# PATTERN: ?posts=delete&id=x
+RewriteRule ^posts/([1-9][0-9]*)/[a-z0-9][a-z0-9\-]*/delete$ index.php?posts=delete&id=$1 [L]
+
+# ([0-9]+)
 # -------------------------------------------
 
 RewriteCond %{REQUEST_URI} !\.(js|css|jpg|gif|zip|png|pdf|ico|woff|woff2|ttf|eot)$ [NC]
