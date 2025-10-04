@@ -12,7 +12,7 @@
 
 <base href="<?php echo BASE_URL; ?>">
 
-<title>DevBlog - Personal Blog Template - <?php echo $title; ?></title>
+<title>Alex Parker - <?php echo $title; ?></title>
 
 <!-- Favicon -->
 <!-- <link rel="shortcut icon" href="images/favicon/favicon.ico" />

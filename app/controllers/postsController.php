@@ -14,7 +14,7 @@ function indexAction (PDO $db) {
 
     // Chargement de la vue 'home' dans $content
     GLOBAL $content, $title;
-    $title = "Home Page";
+    $title = POSTS_INDEX_TITLE;
     ob_start();
     include '../app/views/posts/index.php';
     $content = ob_get_clean();
@@ -64,6 +64,31 @@ function deleteAction (PDO $db, int $id) {
     include_once '../app/models/postsModel.php';
     $return = PostsModel\deleteOneById($db, $id);
 
+    // Redirection vers la liste des posts
+    header('Location: ' . BASE_URL);
+}
+
+function editFormAction (PDO $db, int $id) {
+    // Demande au modèle le post à afficher dans le form
+    include_once '../app/models/postsModel.php';
+    $post = PostsModel\findOneById($db, $id);
+
+    // Chargement des catégories
+    include_once '../app/models/categoriesModel.php';
+    $categories = \App\Models\CategoriesModel\findAll($db);
+
+    // Chargement de la vue editForm dans $content
+    GLOBAL $content, $title;
+    $title = POSTS_EDITFORM_TITLE;
+    ob_start();
+    include '../app/views/posts/editForm.php';
+    $content = ob_get_clean();
+}
+
+function updateFormAction (PDO $db, int $id) {
+    // Demande au modèle de modifier le post
+    include_once '../app/models/postsModel.php';
+    $return = PostsModel\updateOneById($db, $id, $_POST);
     // Redirection vers la liste des posts
     header('Location: ' . BASE_URL);
 }

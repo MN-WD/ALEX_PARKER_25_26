@@ -38,7 +38,7 @@ function insertOne (PDO $db, array $data) {
     $rs->bindValue(':title', $data['title'], PDO::PARAM_STR);
     $rs->bindValue(':text', $data['text'], PDO::PARAM_STR);
     $rs->bindValue(':quote', $data['quote'], PDO::PARAM_STR);
-    $rs->bindValue(':category_id', $data['category_id'], PDO::PARAM_STR);
+    $rs->bindValue(':category_id', $data['category_id'], PDO::PARAM_INT);
     return $rs->execute();
 }
 
@@ -48,4 +48,20 @@ function deleteOneById (PDO $db, int $id) {
     $rs = $db->prepare($sql);
     $rs->bindValue(':id', $id, PDO::PARAM_INT);
     $rs->execute();
+}
+
+function updateOneById (PDO $db, int $id, array $data) {
+    $sql = "UPDATE posts
+            SET title = :title,
+                text = :text,
+                quote = :quote,
+                category_id = :category_id
+            WHERE id = :id;";
+    $rs = $db->prepare($sql);
+    $rs->bindValue(':id', $id, PDO::PARAM_INT);
+    $rs->bindValue(':title', $data['title'], PDO::PARAM_STR);
+    $rs->bindValue(':text', $data['text'], PDO::PARAM_STR);
+    $rs->bindValue(':quote', $data['quote'], PDO::PARAM_STR);
+    $rs->bindValue(':category_id', $data['category_id'], PDO::PARAM_INT);
+    return $rs->execute();
 }

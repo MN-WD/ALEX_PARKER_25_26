@@ -25,6 +25,16 @@ switch ($_GET['posts']):
         PostsController\deleteAction($db, $_GET['id']);
         break;
 
+    // Édition d'un post : editForm
+    case 'editForm':
+        PostsController\editFormAction($db, $_GET['id']);
+        break;
+
+    // Édition d'un post : updateForm
+    case 'updateForm':
+        PostsController\updateFormAction($db, $_GET['id']);
+        break;
+
     default:
         PostsController\indexAction($db);
         break;
